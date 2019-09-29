@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace suncoast_overflow.Models
 {
@@ -7,8 +8,8 @@ namespace suncoast_overflow.Models
     public int Id { get; set; }
     public string AnswerBody { get; set; }
     public int AnswerVotes { get; set; }
-    public int? QuestionID { get; set; }
-    public Questions Question { get; set; }
+    public int? QuestionsID { get; set; }
+    public Questions Questions { get; set; }
 
   }
 }

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using suncoast_overflow;
@@ -9,9 +10,10 @@ using suncoast_overflow;
 namespace sdgreacttemplate.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20190928172736_addAnswersController")]
+    partial class addAnswersController
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,11 +30,11 @@ namespace sdgreacttemplate.Migrations
 
                     b.Property<int>("AnswerVotes");
 
-                    b.Property<int?>("QuestionsID");
+                    b.Property<int?>("QuestionID");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("QuestionsID");
+                    b.HasIndex("QuestionID");
 
                     b.ToTable("AnswersTable");
                 });
@@ -57,9 +59,9 @@ namespace sdgreacttemplate.Migrations
 
             modelBuilder.Entity("suncoast_overflow.Models.Answers", b =>
                 {
-                    b.HasOne("suncoast_overflow.Models.Questions", "Questions")
+                    b.HasOne("suncoast_overflow.Models.Questions", "Question")
                         .WithMany()
-                        .HasForeignKey("QuestionsID");
+                        .HasForeignKey("QuestionID");
                 });
 #pragma warning restore 612, 618
         }
